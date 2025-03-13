@@ -34,10 +34,11 @@ Route::get('/category/home-care', [ProductController::class, 'homeCare']);
 Route::get('/category/baby-kid', [ProductController::class, 'babyKid']);
 
 // route halaman user
-Route::get('/user/{id}/name/{name}', [UserController::class, 'profile']);
+//Route::get('/user/{id}/name/{name}', [UserController::class, 'profile']);
 
 //route halaman penjualan
 Route::get('/sales', [SalesController::class, 'index']);
 
 Route::get('/level', [LevelController::class, 'index']);
 Route::get('/kategori', [KategoriController::class, 'index']);
+Route::get('/user', [UserController::class, 'index']);
