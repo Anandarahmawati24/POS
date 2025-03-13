@@ -12,7 +12,14 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user =UserModel::where('level_id', 2)->count();
+        $user =UserModel::firstOrCreate(
+            ['username' => 'manager22'],
+            [
+            'nama' => 'Manager Dua Dua',
+            'password' => Hash::make('123456'),
+            'level_id' => 2
+        ]
+    );
         return view('user', ['data'=> $user]);
 
     }
