@@ -58,6 +58,6 @@ class UserController extends Controller
 
     public function getUserrWithLevel(){
         $user = UserModel::with('level')->get();
-        dd($user);
+        return view('user', ['data'=> $user]);
     }
 }
