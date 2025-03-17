@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,4 +81,15 @@ Route::group(['prefix' => 'kategori'], function () {
   Route::get('/{id}/edit', [KategoriController::class, 'edit']); // Form edit kategori
   Route::put('/{id}', [KategoriController::class, 'update']); // Update kategori
   Route::delete('/{id}', [KategoriController::class, 'destroy']); // Hapus kategori
+});
+
+Route::group(['prefix' => 'supplier'], function () {
+  Route::get('/', [SupplierController::class, 'index']); // Halaman awal supplier
+  Route::post('/list', [SupplierController::class, 'list']); // DataTables JSON
+  Route::get('/create', [SupplierController::class, 'create']); // Form tambah supplier
+  Route::post('/', [SupplierController::class, 'store']); // Simpan supplier baru
+  Route::get('/{id}', [SupplierController::class, 'show']); // Detail supplier
+  Route::get('/{id}/edit', [SupplierController::class, 'edit']); // Form edit supplier
+  Route::put('/{id}', [SupplierController::class, 'update']); // Update supplier
+  Route::delete('/{id}', [SupplierController::class, 'destroy']); // Hapus supplier
 });
