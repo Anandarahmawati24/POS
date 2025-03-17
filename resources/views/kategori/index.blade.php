@@ -24,7 +24,7 @@
                         <select class="form-control" id="kategori_filter" name="kategori_filter">
                             <option value="">- Semua -</option>
                             @foreach($kategoris as $item)
-                            <option value="{{ $item->kategori_id }}">{{ $item->kategori_kode }}</option>
+                            <option value="{{ $item->kategori_id }}">{{ $item->kategori_nama }}</option>
                             @endforeach
                         </select>
                         <small class="form-text text-muted">Filter berdasarkan kategori</small>
