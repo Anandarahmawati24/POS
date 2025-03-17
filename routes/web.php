@@ -70,3 +70,14 @@ Route::group(['prefix' => 'level'], function () {
   Route::put('/{id}', [LevelController::class, 'update']); // Update level
   Route::delete('/{id}', [LevelController::class, 'destroy']); // Hapus level
 });
+
+Route::group(['prefix' => 'kategori'], function () {
+  Route::get('/', [KategoriController::class, 'index']); // Halaman awal kategori
+  Route::post('/list', [KategoriController::class, 'list']); // DataTables JSON
+  Route::get('/create', [KategoriController::class, 'create']); // Form tambah kategori
+  Route::post('/', [KategoriController::class, 'store']); // Simpan kategori baru
+  Route::get('/{id}', [KategoriController::class, 'show']); // Detail kategori
+  Route::get('/{id}/edit', [KategoriController::class, 'edit']); // Form edit kategori
+  Route::put('/{id}', [KategoriController::class, 'update']); // Update kategori
+  Route::delete('/{id}', [KategoriController::class, 'destroy']); // Hapus kategori
+});
