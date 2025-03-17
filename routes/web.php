@@ -59,3 +59,14 @@ Route::group(['prefix' => 'user'], function () {
   Route::put('/{id}', [UserController::class, 'update']); // menyimpan perubahan data user
   Route::delete('/{id}', [UserController::class, 'destroy']); // menghapus data user
 });
+
+Route::group(['prefix' => 'level'], function () {
+  Route::get('/', [LevelController::class, 'index']); // Halaman awal level
+  Route::post('/list', [LevelController::class, 'list']); // DataTables JSON
+  Route::get('/create', [LevelController::class, 'create']); // Form tambah level
+  Route::post('/', [LevelController::class, 'store']); // Simpan level baru
+  Route::get('/{id}', [LevelController::class, 'show']); // Detail level
+  Route::get('/{id}/edit', [LevelController::class, 'edit']); // Form edit level
+  Route::put('/{id}', [LevelController::class, 'update']); // Update level
+  Route::delete('/{id}', [LevelController::class, 'destroy']); // Hapus level
+});
