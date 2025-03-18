@@ -9,6 +9,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\BarangController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -92,4 +94,15 @@ Route::group(['prefix' => 'supplier'], function () {
   Route::get('/{id}/edit', [SupplierController::class, 'edit']); // Form edit supplier
   Route::put('/{id}', [SupplierController::class, 'update']); // Update supplier
   Route::delete('/{id}', [SupplierController::class, 'destroy']); // Hapus supplier
+});
+
+Route::group(['prefix' => 'barang'], function () {
+    Route::get('/', [BarangController::class, 'index']); // Halaman daftar barang
+    Route::post('/list', [BarangController::class, 'list']); // DataTables JSON
+    Route::get('/create', [BarangController::class, 'create']); // Form tambah barang
+    Route::post('/', [BarangController::class, 'store']); // Simpan barang baru
+    Route::get('/{id}', [BarangController::class, 'show']); // Detail barang
+    Route::get('/{id}/edit', [BarangController::class, 'edit']); // Form edit barang
+    Route::put('/{id}', [BarangController::class, 'update']); // Update barang
+    Route::delete('/{id}', [BarangController::class, 'destroy']); // Hapus barang
 });
