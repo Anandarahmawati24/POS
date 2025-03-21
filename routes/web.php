@@ -90,13 +90,15 @@ Route::group(['prefix' => 'kategori'], function () {
 });
 
 Route::group(['prefix' => 'supplier'], function () {
-  Route::get('/', [SupplierController::class, 'index']); // Halaman awal supplier
+  Route::match(['get', 'post'],'/', [SupplierController::class, 'index']); // Halaman awal supplier
   Route::post('/list', [SupplierController::class, 'list']); // DataTables JSON
-  Route::get('/create', [SupplierController::class, 'create']); // Form tambah supplier
-  Route::post('/', [SupplierController::class, 'store']); // Simpan supplier baru
+  Route::get('/create_ajax', [SupplierController::class, 'create_ajax']); // Form tambah supplier
+  Route::post('/ajax', [SupplierController::class, 'store_ajax']); // Simpan supplier baru
   Route::get('/{id}', [SupplierController::class, 'show']); // Detail supplier
-  Route::get('/{id}/edit', [SupplierController::class, 'edit']); // Form edit supplier
-  Route::put('/{id}', [SupplierController::class, 'update']); // Update supplier
+  Route::get('/{id}/edit_ajax', [SupplierController::class, 'edit_ajax']); // Form edit supplier
+  Route::put('/{id}/update_ajax', [SupplierController::class, 'update_ajax']); // Update supplier
+  Route::get('/{id}/delete_ajax', [SupplierController::class, 'confirm_ajax']); // Konfirmasi hapus supplier AJAX
+  Route::delete('/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']); // Hapus supplier AJAX
   Route::delete('/{id}', [SupplierController::class, 'destroy']); // Hapus supplier
 });
 
