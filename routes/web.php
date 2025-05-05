@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BarangController;
 
 
@@ -23,22 +25,25 @@ use App\Http\Controllers\BarangController;
 |
 */
 
-//Route::get('/', function () {
-  //  return view('welcome');
-//});
-
-//route halaman home
-//Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // route halaman products
-Route::get('/category/food-beverage', [ProductController::class, 'foodBeverage']);
-Route::get('/category/beauty-health', [ProductController::class, 'beautyHealth']);
-Route::get('/category/home-care', [ProductController::class, 'homeCare']);
-Route::get('/category/baby-kid', [ProductController::class, 'babyKid']);
+//Route::get('/category/food-beverage', [ProductController::class, 'foodBeverage']);
+//Route::get('/category/beauty-health', [ProductController::class, 'beautyHealth']);
+//Route::get('/category/home-care', [ProductController::class, 'homeCare']);
+//Route::get('/category/baby-kid', [ProductController::class, 'babyKid']);
 
 // route halaman user
 //Route::get('/user/{id}/name/{name}', [UserController::class, 'profile']);
 //route halaman penjualan
+
+Route::pattern('id', '[0-9]+'); // artinya ketika ada parameter {id} maka harus berupa angka
+
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'postlogin']);
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
+
+Route::middleware(['auth'])->group(function() { //artinya semua route di dalam group ini harus login dulu
+
 Route::get('/sales', [SalesController::class, 'index']);
 Route::get('/level', [LevelController::class, 'index']);
 Route::get('/kategori', [KategoriController::class, 'index']);
@@ -113,4 +118,6 @@ Route::group(['prefix' => 'barang'], function () {
   Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']); // Konfirmasi hapus barang AJAX
   Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']); // Hapus barang AJAX
   Route::delete('/{id}', [BarangController::class, 'destroy']); // Hapus barang
+});
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
 });

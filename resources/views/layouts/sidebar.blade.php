@@ -66,6 +66,12 @@
                     <p>Transaksi Penjualan</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ url('/profile') }}" class="nav-link {{ ($activeMenu == 'profile') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-user"></i>
+                    <p>Profil</p>
+                </a>
+            </li>
         </ul>
     </nav>
 </div>
