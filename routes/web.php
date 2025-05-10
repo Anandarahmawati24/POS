@@ -44,7 +44,8 @@ Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 
 Route::middleware(['auth'])->group(function() { //artinya semua route di dalam group ini harus login dulu
 
-Route::middleware(['authorize:ADM'])->group(function() {
+//route ini hanya bisa diakses oleh manager dan admin
+Route::middleware(['authorize:ADM,MNG'])->group(function() {
   Route::group(['prefix' => 'level'], function () {
     Route::post('/', [LevelController::class, 'index']); // Menampilkan halaman awal level
     Route::post('/list', [LevelController::class, 'list']); // Menampilkan data level dalam bentuk JSON untuk DataTables
@@ -59,7 +60,7 @@ Route::middleware(['authorize:ADM'])->group(function() {
   });
 });
 
-Route::get('/sales', [SalesController::class, 'index']);
+//Route::get('/sales', [SalesController::class, 'index']);
 Route::get('/level', [LevelController::class, 'index']);
 Route::get('/kategori', [KategoriController::class, 'index']);
 Route::get('/user', [UserController::class, 'index']);
@@ -70,6 +71,7 @@ Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan']);
 Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
 
 Route::get('/', [WelcomeController::class, 'index']);
+Route::middleware(['authorize:ADM'])->group(function() {
 Route::group(['prefix' => 'user'], function () {
   Route::post('/', [UserController::class, 'index']); // menampilkan halaman awal user
   Route::post('/list', [UserController::class, 'list']); // menampilkan data user dalam bentuk json untuk datatables
@@ -82,8 +84,9 @@ Route::group(['prefix' => 'user'], function () {
   Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']);// hapus data user ajax
   Route::delete('/{id}', [UserController::class, 'destroy']); // menghapus data user
 });
+});
 
-
+Route::middleware(['authorize:ADM,STF'])->group(function() {
 Route::group(['prefix' => 'kategori'], function () {
   Route::post('/', [KategoriController::class, 'index']); // Menampilkan halaman awal kategori
   Route::post('/list', [KategoriController::class, 'list']); // Menampilkan data kategori dalam JSON untuk DataTables
@@ -96,7 +99,9 @@ Route::group(['prefix' => 'kategori'], function () {
   Route::delete('/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']); // Hapus data kategori AJAX
   Route::delete('/{id}', [KategoriController::class, 'destroy']); // Menghapus data kategori
 });
+});
 
+Route::middleware(['authorize:ADM,STF'])->group(function() {
 Route::group(['prefix' => 'supplier'], function () {
   Route::match(['get', 'post'],'/', [SupplierController::class, 'index']); // Halaman awal supplier
   Route::post('/list', [SupplierController::class, 'list']); // DataTables JSON
@@ -109,7 +114,9 @@ Route::group(['prefix' => 'supplier'], function () {
   Route::delete('/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']); // Hapus supplier AJAX
   Route::delete('/{id}', [SupplierController::class, 'destroy']); // Hapus supplier
 });
+});
 
+Route::middleware(['authorize:ADM,STF'])->group(function() {
 Route::group(['prefix' => 'barang'], function () {
   Route::match(['get', 'post'],'/', [BarangController::class, 'index']); // Halaman awal barang
   Route::post('/list', [BarangController::class, 'list']); // DataTables JSON
@@ -122,5 +129,7 @@ Route::group(['prefix' => 'barang'], function () {
   Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']); // Hapus barang AJAX
   Route::delete('/{id}', [BarangController::class, 'destroy']); // Hapus barang
 });
+});
+
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
 });
