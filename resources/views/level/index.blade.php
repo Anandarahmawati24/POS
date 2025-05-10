@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <table class="table table-bordered table-striped table-hover table-sm" id="table_level">
+        <table class="table table-bordered table-striped table-hover table-sm" id="tabel_level">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -62,7 +62,7 @@ backdrop="static" data-keyboard="false" data-width="75%" aria-hidden="true"></di
 }
 var dataLevel;
     $(document).ready(function() {
-         dataLevel = $('#table_level').DataTable({
+         dataLevel = $('#tabel_level').DataTable({
             serverSide: true,
             ajax: {
                 "url": "{{ url('level/list') }}",
