@@ -105,7 +105,7 @@ Route::group(['prefix' => 'kategori'], function () {
 });
 });
 
-Route::middleware(['authorize:ADM,STF'])->group(function() {
+Route::middleware(['authorize:ADM,STF,MNG'])->group(function() {
 Route::group(['prefix' => 'supplier'], function () {
   Route::match(['get', 'post'],'/', [SupplierController::class, 'index']); // Halaman awal supplier
   Route::post('/list', [SupplierController::class, 'list']); // DataTables JSON
