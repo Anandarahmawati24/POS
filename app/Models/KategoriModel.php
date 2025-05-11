@@ -10,7 +10,7 @@ class KategoriModel extends Model
     use HasFactory;
     protected $table = 'm_kategori'; // Nama tabel di database
     protected $primaryKey = 'kategori_id'; // Primary key
-    public $timestamps = false; // Jika tidak ada created_at & updated_at
+    public $timestamps = true; 
 
-    protected $fillable = ['kategori_kode', 'kategori_nama']; 
+    protected $fillable = ['kategori_kode', 'kategori_nama','created_at']; 
 }

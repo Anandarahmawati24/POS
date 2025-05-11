@@ -13,7 +13,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\RegisterController;
-
+use App\Models\KategoriModel;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +92,7 @@ Route::group(['prefix' => 'user'], function () {
   Route::get('/{id}/delete_ajax', [UserController::class, 'confirm_ajax']);// tampilan form delete user ajax
   Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']);// hapus data user ajax
   Route::delete('/{id}', [UserController::class, 'destroy']); // menghapus data user
-   Route::get('/import', [UserController::class, 'import']);
+  Route::get('/import', [UserController::class, 'import']);
   Route::post('/import_ajax', [UserController::class, 'import_ajax']);
 });
 });
@@ -111,6 +111,8 @@ Route::group(['prefix' => 'kategori'], function () {
   Route::get('/{id}/delete_ajax', [KategoriController::class, 'confirm_ajax']); // Tampilan form delete kategori AJAX
   Route::delete('/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']); // Hapus data kategori AJAX
   Route::delete('/{id}', [KategoriController::class, 'destroy']); // Menghapus data kategori
+  Route::get('/import', [KategoriController::class, 'import']);
+  Route::post('/import_ajax', [KategoriController::class, 'import_ajax']);
 });
 });
 
