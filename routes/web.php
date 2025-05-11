@@ -124,6 +124,8 @@ Route::group(['prefix' => 'supplier'], function () {
   Route::get('/{id}/delete_ajax', [SupplierController::class, 'confirm_ajax']); // Konfirmasi hapus supplier AJAX
   Route::delete('/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']); // Hapus supplier AJAX
   Route::delete('/{id}', [SupplierController::class, 'destroy']); // Hapus supplier
+  Route::get('/import', [SupplierController::class, 'import']);
+  Route::post('/import_ajax', [SupplierController::class, 'import_ajax']);
 });
 });
 
