@@ -12,6 +12,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\RegisterController;
 
 
 /*
@@ -37,6 +38,9 @@ use App\Http\Controllers\BarangController;
 //route halaman penjualan
 
 Route::pattern('id', '[0-9]+'); // artinya ketika ada parameter {id} maka harus berupa angka
+
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'postlogin']);
