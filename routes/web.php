@@ -62,6 +62,9 @@ Route::middleware(['authorize:ADM,MNG'])->group(function() {
     Route::get('/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']); // Tampilan form delete level AJAX
     Route::delete('/{id}/delete_ajax', [LevelController::class, 'delete_ajax']); // Hapus data level AJAX
     Route::delete('/{id}', [LevelController::class, 'destroy']); // Menghapus data level
+    Route::get('/import', [LevelController::class, 'import']);
+    Route::post('/import_ajax', [LevelController::class, 'import_ajax']);
+
   });
 });
 
