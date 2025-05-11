@@ -92,6 +92,9 @@ Route::group(['prefix' => 'user'], function () {
   Route::get('/{id}/delete_ajax', [UserController::class, 'confirm_ajax']);// tampilan form delete user ajax
   Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']);// hapus data user ajax
   Route::delete('/{id}', [UserController::class, 'destroy']); // menghapus data user
+   Route::get('/import', [UserController::class, 'import']);
+  Route::post('/import_ajax', [UserController::class, 'import_ajax']);
+});
 });
 });
 
@@ -126,7 +129,6 @@ Route::group(['prefix' => 'supplier'], function () {
   Route::delete('/{id}', [SupplierController::class, 'destroy']); // Hapus supplier
   Route::get('/import', [SupplierController::class, 'import']);
   Route::post('/import_ajax', [SupplierController::class, 'import_ajax']);
-});
 });
 
 Route::middleware(['authorize:ADM,STF'])->group(function() {
