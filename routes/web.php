@@ -56,6 +56,7 @@ Route::middleware(['authorize:ADM,MNG'])->group(function() {
     Route::get('/create_ajax', [LevelController::class, 'create_ajax']); // Menampilkan halaman form tambah level
     Route::post('/ajax', [LevelController::class, 'store_ajax']); // Menyimpan data level baru
     Route::get('/{id}', [LevelController::class, 'show']); // Menampilkan detail level
+    Route::get('/{id}/show_ajax', [LevelController::class, 'show_ajax']);
     Route::get('/{id}/edit_ajax', [LevelController::class, 'edit_ajax']); // Menampilkan halaman form edit level
     Route::put('/{id}/update_ajax', [LevelController::class, 'update_ajax']); // Menyimpan perubahan data level
     Route::get('/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']); // Tampilan form delete level AJAX
@@ -82,6 +83,7 @@ Route::group(['prefix' => 'user'], function () {
   Route::get('/create_ajax', [UserController::class, 'create_ajax']); // menampilkan halaman form tambah user
   Route::post('/ajax', [UserController::class, 'store_ajax']); // menyimpan data user baru
   Route::get('/{id}', [UserController::class, 'show']); // menampilkan detail user
+  Route::get('/{id}/show_ajax', [UserController::class, 'show_ajax']);
   Route::get('/{id}/edit_ajax', [UserController::class, 'edit_ajax']); // menampilkan halaman form edit user
   Route::put('/{id}/update_ajax', [UserController::class, 'update_ajax']); // menyimpan perubahan data user
   Route::get('/{id}/delete_ajax', [UserController::class, 'confirm_ajax']);// tampilan form delete user ajax
@@ -97,6 +99,7 @@ Route::group(['prefix' => 'kategori'], function () {
   Route::get('/create_ajax', [KategoriController::class, 'create_ajax']); // Menampilkan form tambah kategori
   Route::post('/ajax', [KategoriController::class, 'store_ajax']); // Menyimpan data kategori baru
   Route::get('/{id}', [KategoriController::class, 'show']); // Menampilkan detail kategori
+  Route::get('/{id}/show_ajax', [KategoriController::class, 'show_ajax']);
   Route::get('/{id}/edit_ajax', [KategoriController::class, 'edit_ajax']); // Menampilkan form edit kategori
   Route::put('/{id}/update_ajax', [KategoriController::class, 'update_ajax']); // Menyimpan perubahan data kategori
   Route::get('/{id}/delete_ajax', [KategoriController::class, 'confirm_ajax']); // Tampilan form delete kategori AJAX
@@ -112,6 +115,7 @@ Route::group(['prefix' => 'supplier'], function () {
   Route::get('/create_ajax', [SupplierController::class, 'create_ajax']); // Form tambah supplier
   Route::post('/ajax', [SupplierController::class, 'store_ajax']); // Simpan supplier baru
   Route::get('/{id}', [SupplierController::class, 'show']); // Detail supplier
+  Route::get('/{id}/show_ajax', [SupplierController::class, 'show_ajax']);
   Route::get('/{id}/edit_ajax', [SupplierController::class, 'edit_ajax']); // Form edit supplier
   Route::put('/{id}/update_ajax', [SupplierController::class, 'update_ajax']); // Update supplier
   Route::get('/{id}/delete_ajax', [SupplierController::class, 'confirm_ajax']); // Konfirmasi hapus supplier AJAX
@@ -127,6 +131,7 @@ Route::group(['prefix' => 'barang'], function () {
   Route::get('/create_ajax', [BarangController::class, 'create_ajax']); // Form tambah barang
   Route::post('/ajax', [BarangController::class, 'store_ajax']); // Simpan barang baru
   Route::get('/{id}', [BarangController::class, 'show']); // Detail barang
+   Route::get('/{id}/show_ajax', [BarangController::class, 'show_ajax']);
   Route::get('/{id}/edit_ajax', [BarangController::class, 'edit_ajax']); // Form edit barang
   Route::put('/{id}/update_ajax', [BarangController::class, 'update_ajax']); // Update barang
   Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']); // Konfirmasi hapus barang AJAX

@@ -285,4 +285,17 @@ public function delete_ajax(Request $request, string $id) {
     }
     return redirect('/');
 }
+// Menampilkan detail level via AJAX
+public function show_ajax($id)
+{
+    $level = LevelModel::find($id);
+
+    // Pastikan data ditemukan
+    if (!$level) {
+        return response()->json(['success' => false, 'message' => 'Level tidak ditemukan'], 404);
+    }
+
+    // Kembalikan tampilan view level
+    return view('level.show_ajax', compact('level'));
+}
 }

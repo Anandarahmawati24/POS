@@ -277,4 +277,17 @@ public function update_ajax(Request $request, string $id)
         }
         return redirect('/');
     }
+    public function show_ajax($id)
+{
+    $barang = BarangModel::find($id);
+
+    // Pastikan data ditemukan
+    if (!$barang) {
+        return response()->json(['success' => false, 'message' => 'Barang tidak ditemukan'], 404);
+    }
+
+    // Kembalikan tampilan view barang
+    return view('barang.show_ajax', compact('barang'));
+}
+
 }

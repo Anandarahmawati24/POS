@@ -319,4 +319,19 @@ confirm(\'Apakah Anda yakit menghapus data ini?\');">Hapus</button></form>';*/
         }
         return redirect('/');
     }
+
+    // Menampilkan detail user via AJAX
+public function show_ajax($id)
+{
+    $user = UserModel::with('level')->find($id);
+
+    // Pastikan data ditemukan
+    if (!$user) {
+        return response()->json(['success' => false, 'message' => 'User tidak ditemukan'], 404);
+    }
+
+    // Kembalikan tampilan view user
+    return view('user.show_ajax', compact('user'));
+}
+
 }
