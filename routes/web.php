@@ -115,6 +115,7 @@ Route::group(['prefix' => 'kategori'], function () {
   Route::delete('/{id}', [KategoriController::class, 'destroy']); // Menghapus data kategori
   Route::get('/import', [KategoriController::class, 'import']);
   Route::post('/import_ajax', [KategoriController::class, 'import_ajax']);
+  Route::get('/export_excel', [KategoriController::class, 'export_excel']); // export excel
 });
 });
 
