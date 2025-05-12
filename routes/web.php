@@ -118,6 +118,7 @@ Route::group(['prefix' => 'kategori'], function () {
   Route::get('/import', [KategoriController::class, 'import']);
   Route::post('/import_ajax', [KategoriController::class, 'import_ajax']);
   Route::get('/export_excel', [KategoriController::class, 'export_excel']); // export excel
+  Route::get('/export_pdf', [KategoriController::class, 'export_pdf']); // export pdf
 });
 });
 
