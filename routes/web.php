@@ -136,7 +136,8 @@ Route::group(['prefix' => 'supplier'], function () {
   Route::delete('/{id}', [SupplierController::class, 'destroy']); // Hapus supplier
   Route::get('/import', [SupplierController::class, 'import']);
   Route::post('/import_ajax', [SupplierController::class, 'import_ajax']);
-    Route::get('/export_excel', [SupplierController::class, 'export_excel']); // export excel
+  Route::get('/export_excel', [SupplierController::class, 'export_excel']); // export excel
+  Route::get('/export_pdf', [SupplierController::class, 'export_pdf']); // export pdf
 });
 
 Route::middleware(['authorize:ADM,STF'])->group(function() {
