@@ -162,4 +162,6 @@ Route::group(['prefix' => 'barang'], function () {
 });
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
+Route::post('/profile/upload', [ProfileController::class, 'upload'])->name('profile.upload');
+Route::post('/profile/upload_ajax', [ProfileController::class, 'upload_ajax']); // ajax upload foto profile
 });
