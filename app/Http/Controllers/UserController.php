@@ -10,6 +10,7 @@ use Monolog\Level;
 use PhpParser\Node\Expr\Cast\Object_;
 use Yajra\DataTables\Facades\DataTables;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -461,5 +462,21 @@ public function export_excel(){
     // Simpan file ke output
     $writer->save('php://output');
     exit;
+}
+
+public function export_pdf(){
+    $user= UserModel::select('user_id', 'level_id', 'username', 'nama', 'password', 'created_at')
+    ->orderBy('user_id')
+    ->orderBy('level_id')
+    ->with('level')
+    ->get();
+
+    //use Barryvdh\DomPDF\Facade\Pdf;
+    $pdf = Pdf::loadView('user.export_pdf', ['user' => $user]);
+    $pdf->setPaper('a4','landscape'); //set ukuran kertas dan orientasi
+    $pdf->setOption("isRemoteEnabled", true); //set true jika ada gambar dari url
+    $pdf->render();
+
+    return $pdf->stream('Data User '.date('Y-m-d H:i:s').'.pdf');
 }
 }

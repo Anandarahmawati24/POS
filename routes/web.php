@@ -97,6 +97,7 @@ Route::group(['prefix' => 'user'], function () {
   Route::get('/import', [UserController::class, 'import']);
   Route::post('/import_ajax', [UserController::class, 'import_ajax']);
   Route::get('/export_excel', [UserController::class, 'export_excel']); // export excel
+  Route::get('/export_pdf', [UserController::class, 'export_pdf']); // export pdf
 });
 });
 });
